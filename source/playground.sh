@@ -7,8 +7,15 @@ set -euo pipefail
 
 export APP_NAME="Bash Playground"
 export APP_SLUG="bash_playground"
+export APP_VERSION="1.0.0"
 export APP_ROOT=$(pwd)
 export APP_HOME=$HOME/.config/$APP_SLUG
+
+app_url="https://github.com/iamprogrammerlk/i_am_mkcert_bot"
+app_license="MIT license"
+app_license_url="https://github.com/iamprogrammerlk/template_bash_script?tab=MIT-1-ov-file"
+app_author="I am Programmer"
+app_author_url="https://iamprogrammer.lk"
 
 cd $HOME
 if [ ! -d "$APP_HOME" ]; then
@@ -22,11 +29,18 @@ if [ ! -f "$APP_ROOT/library/style.sh" ]; then
 fi
 . $APP_ROOT/library/style.sh
 
+if [ ! -f "$APP_ROOT/library/ui.sh" ]; then
+  echo "Runtime Error : '/library/ui.sh' is require to run '$APP_NAME'." >&2
+  echo ""
+  exit 1
+fi
+. $APP_ROOT/library/ui.sh
 
 
 
 
-# Style demo start -----------------------------------------------------------------------------------------------------
+
+# style_demo -----------------------------------------------------------------------------------------------------------
 function style_demo(){
 
   string_to_format="This string formatting is applied by calling function "
@@ -90,6 +104,33 @@ function style_demo(){
   echo ""
 
 }
-style_demo
-# Style demo end -------------------------------------------------------------------------------------------------------
+# style_demo
 
+# print_header ---------------------------------------------------------------------------------------------------------
+function print_header()
+{
+  style_foreground_purple "$(ui_header_divider)"
+  style_foreground_purple "$(ui_header_fill)"
+  style_foreground_purple "$(ui_header_title_centered "$APP_NAME v$APP_VERSION")"
+  style_foreground_purple "$(ui_header_fill)"
+  style_foreground_purple "$(ui_header_divider)"
+  echo ""
+}
+print_header
+
+# print_copyright ------------------------------------------------------------------------------------------------------
+function print_copyright()
+{
+  local msg_01="   Developer : $app_author [$app_author_url] "
+  local msg_02="     License : $app_license [$app_license_url]"
+  local msg_03="     Version : $APP_VERSION"
+  style_foreground_purple "$(ui_header_divider)"
+  style_foreground_purple "$(ui_header_fill)"
+  style_foreground_purple "$(ui_header_title_left "$msg_01")"
+  style_foreground_purple "$(ui_header_title_left "$msg_02")"
+  style_foreground_purple "$(ui_header_title_left "$msg_03")"
+  style_foreground_purple "$(ui_header_fill)"
+  style_foreground_purple "$(ui_header_divider)"
+  echo ""
+}
+print_copyright
