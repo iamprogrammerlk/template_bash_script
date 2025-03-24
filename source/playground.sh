@@ -154,14 +154,23 @@ function demo_style_combine_use_case()
 
 
 
+# Default <TITLE> <COLOR>
+show_header
+empty_line
 
+# Custom <TITLE> Default <COLOR>
+show_header "Custom App Name with default color"
+empty_line
 
+# Custom <TITLE> Custom <COLOR>
+show_header "Custom App Name with Custom Color " "style_foreground_blue"
+empty_line
 
-demo_style_text_format
-empty_line
-demo_style_text_foreground
-empty_line
-demo_style_text_background
-empty_line
-demo_style_combine_use_case
-empty_line
+# demo_style_text_format
+# empty_line
+# demo_style_text_foreground
+# empty_line
+# demo_style_text_background
+# empty_line
+# demo_style_combine_use_case
+# empty_line
