@@ -11,11 +11,14 @@ export APP_VERSION="1.0.0"
 export APP_ROOT=$(pwd)
 export APP_HOME=$HOME/.config/$APP_SLUG
 
-app_url="https://github.com/iamprogrammerlk/i_am_mkcert_bot"
-app_license="MIT license"
-app_license_url="https://github.com/iamprogrammerlk/template_bash_script?tab=MIT-1-ov-file"
-app_author="I am Programmer"
-app_author_url="https://iamprogrammer.lk"
+declare -A app_configuration
+  app_configuration["app_url"]="https://github.com/iamprogrammerlk/i_am_mkcert_bot"
+  app_configuration["app_license"]="MIT license"
+  app_configuration["app_license_url"]="https://github.com/iamprogrammerlk/template_bash_script?tab=MIT-1-ov-file"
+  app_configuration["app_author"]="I am Programmer"
+  app_configuration["app_author_url"]="https://iamprogrammer.lk"
+
+demo_string_to_be_format="This string formatting is applied by calling function "
 
 cd $HOME
 if [ ! -d "$APP_HOME" ]; then
@@ -43,103 +46,121 @@ if [ ! -f "$APP_ROOT/library/ui.sh" ]; then
 fi
 . $APP_ROOT/library/ui.sh
 
+# show_app_header ------------------------------------------------------------------------------------------------------
+function show_app_header()
+{
+  declare -a header_title=(
+    "style_foreground_blue"
+    "ui_message_box_text_align_center"
+    "$APP_NAME v$APP_VERSION"
+  )
+  ui_message_box "${header_title[@]}"
+}
 
-
-string_to_format="This string formatting is applied by calling function "
+# show_app_footer ------------------------------------------------------------------------------------------------------
+function show_app_footer()
+{
+  declare -a footer_title=(
+    "style_foreground_gray"
+    "ui_message_box_text_align_center"
+    "Thank you!"
+    "ui_message_box_text_align_left"
+    "   Developer : ${app_configuration["app_author"]} [${app_configuration["app_author_url"]}]"
+    "     License : ${app_configuration["app_license"]} [${app_configuration["app_license_url"]}]"
+    "     Version : $APP_VERSION"
+  )
+  ui_message_box "${footer_title[@]}"
+}
 
 # demo_style_text_format -----------------------------------------------------------------------------------------------
-
 function demo_style_text_format(){
-  style_normal "$string_to_format style_normal"
+  style_normal "$demo_string_to_be_format style_normal"
   new_line
-  style_bold "$string_to_format style_bold"
+  style_bold "$demo_string_to_be_format style_bold"
   new_line
-  style_italic "$string_to_format style_italic"
+  style_italic "$demo_string_to_be_format style_italic"
   new_line
-  style_underline "$string_to_format style_underline"
+  style_underline "$demo_string_to_be_format style_underline"
   new_line
-  style_blinking "$string_to_format style_blinking"
+  style_blinking "$demo_string_to_be_format style_blinking"
   new_line
-  style_reverse_video "$string_to_format style_reverse_video"
+  style_reverse_video "$demo_string_to_be_format style_reverse_video"
   new_line
 }
 
 # demo_style_text_foreground -------------------------------------------------------------------------------------------
-
 function demo_style_text_foreground(){
-  style_foreground_black "$string_to_format style_foreground_black"
+  style_foreground_black "$demo_string_to_be_format style_foreground_black"
   new_line
-  style_foreground_blue "$string_to_format style_foreground_blue"
+  style_foreground_blue "$demo_string_to_be_format style_foreground_blue"
   new_line
-  style_foreground_blue_bold "$string_to_format style_foreground_blue_bold"
+  style_foreground_blue_bold "$demo_string_to_be_format style_foreground_blue_bold"
   new_line
-  style_foreground_brown "$string_to_format style_foreground_brown"
+  style_foreground_brown "$demo_string_to_be_format style_foreground_brown"
   new_line
-  style_foreground_brown_bold "$string_to_format style_foreground_brown_bold"
+  style_foreground_brown_bold "$demo_string_to_be_format style_foreground_brown_bold"
   new_line
-  style_foreground_cyan "$string_to_format style_foreground_cyan"
+  style_foreground_cyan "$demo_string_to_be_format style_foreground_cyan"
   new_line
-  style_foreground_cyan_bold "$string_to_format style_foreground_cyan_bold"
+  style_foreground_cyan_bold "$demo_string_to_be_format style_foreground_cyan_bold"
   new_line
-  style_foreground_gray "$string_to_format style_foreground_gray"
+  style_foreground_gray "$demo_string_to_be_format style_foreground_gray"
   new_line
-  style_foreground_gray_bold "$string_to_format style_foreground_gray_bold"
+  style_foreground_gray_bold "$demo_string_to_be_format style_foreground_gray_bold"
   new_line
-  style_foreground_green "$string_to_format style_foreground_green"
+  style_foreground_green "$demo_string_to_be_format style_foreground_green"
   new_line
-  style_foreground_green_bold "$string_to_format style_foreground_green_bold"
+  style_foreground_green_bold "$demo_string_to_be_format style_foreground_green_bold"
   new_line
-  style_foreground_purple "$string_to_format style_foreground_purple"
+  style_foreground_purple "$demo_string_to_be_format style_foreground_purple"
   new_line
-  style_foreground_purple_bold "$string_to_format style_foreground_purple_bold"
+  style_foreground_purple_bold "$demo_string_to_be_format style_foreground_purple_bold"
   new_line
-  style_foreground_red "$string_to_format style_foreground_red"
+  style_foreground_red "$demo_string_to_be_format style_foreground_red"
   new_line
-  style_foreground_red_bold "$string_to_format style_foreground_red_bold"
+  style_foreground_red_bold "$demo_string_to_be_format style_foreground_red_bold"
   new_line
-  style_foreground_white "$string_to_format style_foreground_white"
+  style_foreground_white "$demo_string_to_be_format style_foreground_white"
   new_line
 }
 
 # demo_style_text_background -------------------------------------------------------------------------------------------
-
 function demo_style_text_background(){
-  style_background_black "$string_to_format style_background_black"
+  style_background_black "$demo_string_to_be_format style_background_black"
   new_line
-  style_background_blue "$string_to_format style_background_blue"
+  style_background_blue "$demo_string_to_be_format style_background_blue"
   new_line
-  style_background_blue_bold "$string_to_format style_background_blue_bold"
+  style_background_blue_bold "$demo_string_to_be_format style_background_blue_bold"
   new_line
-  style_background_brown "$string_to_format style_background_brown"
+  style_background_brown "$demo_string_to_be_format style_background_brown"
   new_line
-  style_background_brown_bold "$string_to_format style_background_brown_bold"
+  style_background_brown_bold "$demo_string_to_be_format style_background_brown_bold"
   new_line
-  style_background_cyan "$string_to_format style_background_cyan"
+  style_background_cyan "$demo_string_to_be_format style_background_cyan"
   new_line
-  style_background_cyan_bold "$string_to_format style_background_cyan_bold"
+  style_background_cyan_bold "$demo_string_to_be_format style_background_cyan_bold"
   new_line
-  style_background_gray "$string_to_format style_background_gray"
+  style_background_gray "$demo_string_to_be_format style_background_gray"
   new_line
-  style_background_gray_bold "$string_to_format style_background_gray_bold"
+  style_background_gray_bold "$demo_string_to_be_format style_background_gray_bold"
   new_line
-  style_background_green "$string_to_format style_background_green"
+  style_background_green "$demo_string_to_be_format style_background_green"
   new_line
-  style_background_green_bold "$string_to_format style_background_green_bold"
+  style_background_green_bold "$demo_string_to_be_format style_background_green_bold"
   new_line
-  style_background_purple "$string_to_format style_background_purple"
+  style_background_purple "$demo_string_to_be_format style_background_purple"
   new_line
-  style_background_purple_bold "$string_to_format style_background_purple_bold"
+  style_background_purple_bold "$demo_string_to_be_format style_background_purple_bold"
   new_line
-  style_background_red "$string_to_format style_background_red"
+  style_background_red "$demo_string_to_be_format style_background_red"
   new_line
-  style_background_red_bold "$string_to_format style_background_red_bold"
+  style_background_red_bold "$demo_string_to_be_format style_background_red_bold"
   new_line
-  style_background_white "$string_to_format style_background_white"
+  style_background_white "$demo_string_to_be_format style_background_white"
   new_line
 }
 
 # demo_style_combine_use_case ------------------------------------------------------------------------------------------
-
 function demo_style_combine_use_case()
 {
   echo -n "$(style_blinking "<<-- SAMPLE -->>") Mix the Foreground Color $(style_foreground_brown "Brown") with the " 
@@ -148,23 +169,64 @@ function demo_style_combine_use_case()
   # No 'new_line' need here, becurse last 'echo' don't have '-n' flag
 }
 
+# demo_ui_message_box ------------------------------------------------------------------------------------------
+function demo_ui_message_box()
+{
+  #  default title with default options
+  ui_message_box
+  empty_line
+
+  #  default title with custom color options
+  ui_message_box "style_foreground_blue"
+  empty_line
+
+  #  default title with custom text alignment options
+  ui_message_box "ui_message_box_text_align_left"
+  empty_line
+
+  ui_message_box "Custom title with default options"
+  empty_line
+
+  ui_message_box "style_foreground_blue" "Custom title with custom color options"
+  empty_line
+
+  options=(
+    "style_foreground_green" 
+    "ui_message_box_text_align_left" 
+    "Custom title with custom color and text align options"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+
+  options=(
+    "style_foreground_green" 
+    "ui_message_box_text_align_left" 
+    "Custom title with custom color,text align and content options"
+    "after this, all arguments"
+    "Will"
+    "Be"
+    "The Content"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+
+  options=(
+    "style_background_cyan_bold" 
+    "ui_message_box_text_align_center" 
+    "Custom title with custom color, text align and content, align options"
+    "ui_message_box_text_align_left" 
+    "after this, all arguments"
+    "Will"
+    "Be"
+    "The Content"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+}
 
 
-
-
-
-
-# Default <TITLE> <COLOR>
-show_header
-empty_line
-
-# Custom <TITLE> Default <COLOR>
-show_header "Custom App Name with default color"
-empty_line
-
-# Custom <TITLE> Custom <COLOR>
-show_header "Custom App Name with Custom Color " "style_foreground_blue"
-empty_line
+# show_app_header
+# empty_line
 
 # demo_style_text_format
 # empty_line
@@ -174,3 +236,9 @@ empty_line
 # empty_line
 # demo_style_combine_use_case
 # empty_line
+# demo_ui_message_box
+# empty_line
+
+# show_app_footer
+# empty_line
+
