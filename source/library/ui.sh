@@ -5,7 +5,7 @@ _divider_symbol="#"
 _fill_symbol=" "
 _border="###"
 
-function _ui_message_box_divider()
+_ui_message_box_divider()
 {
   local divider=""
   local i=1
@@ -16,7 +16,7 @@ function _ui_message_box_divider()
   echo -e "$divider"
 }
 
-function _ui_message_box_fill()
+_ui_message_box_fill()
 {
   local fill=""
   local border_width=$(expr length "$_border")
@@ -31,7 +31,7 @@ function _ui_message_box_fill()
 
 # BEWARE: Usage of unicode characters and emojis will messed up the text alignment.
 # Parameter $1 <STRING> | string to be centered (input)
-function ui_message_box_text_align_center()
+ui_message_box_text_align_center()
 {
   if [ -z ${1+x} ]; then
     echo "Runtime Error : Invalid argument. 'ui_message_box_text_align_center <STRING>'" >&2
@@ -61,7 +61,7 @@ function ui_message_box_text_align_center()
 
 # BEWARE: Usage of unicode characters and emojis will messed up the text alignment.
 # Parameter $1 <STRING> | string to be aline left (input)
-function ui_message_box_text_align_left()
+ui_message_box_text_align_left()
 {
   if [ -z ${1+x} ]; then
     echo "Runtime Error : Invalid argument. 'ui_message_box_text_align_left <STRING>'" >&2
@@ -93,7 +93,7 @@ function ui_message_box_text_align_left()
 # Parameter $4 <FUNCTION_NAME> | text alignment for message box content, Default 'ui_message_box_text_align_center'
 # Parameter $5 <STRING> | string to be in message box content, Default ''
 # Parameter $@ <STRING> | string to be in message box content, Default ''
-function ui_message_box()
+ui_message_box()
 {
   local color_style="style_foreground_purple"
   local title_alignment="ui_message_box_text_align_center"

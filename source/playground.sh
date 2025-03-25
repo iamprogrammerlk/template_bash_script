@@ -11,12 +11,13 @@ export APP_VERSION="1.0.0"
 export APP_ROOT=$(pwd)
 export APP_HOME=$HOME/.config/$APP_SLUG
 
-declare -A app_configuration
-  app_configuration["app_url"]="https://github.com/iamprogrammerlk/i_am_mkcert_bot"
-  app_configuration["app_license"]="MIT license"
-  app_configuration["app_license_url"]="https://github.com/iamprogrammerlk/template_bash_script?tab=MIT-1-ov-file"
-  app_configuration["app_author"]="I am Programmer"
-  app_configuration["app_author_url"]="https://iamprogrammer.lk"
+declare -A app_configuration=(
+  ["app_url"]="https://github.com/iamprogrammerlk/i_am_mkcert_bot"
+  ["app_license"]="MIT license"
+  ["app_license_url"]="https://github.com/iamprogrammerlk/template_bash_script?tab=MIT-1-ov-file"
+  ["app_author"]="I am Programmer"
+  ["app_author_url"]="https://iamprogrammer.lk"
+)
 
 demo_string_to_be_format="This string formatting is applied by calling function "
 
@@ -47,7 +48,7 @@ fi
 . $APP_ROOT/library/ui.sh
 
 # show_app_header ------------------------------------------------------------------------------------------------------
-function show_app_header()
+show_app_header()
 {
   declare -a header_title=(
     "style_foreground_blue"
@@ -58,7 +59,7 @@ function show_app_header()
 }
 
 # show_app_footer ------------------------------------------------------------------------------------------------------
-function show_app_footer()
+show_app_footer()
 {
   declare -a footer_title=(
     "style_foreground_gray"
@@ -73,7 +74,7 @@ function show_app_footer()
 }
 
 # demo_style_text_format -----------------------------------------------------------------------------------------------
-function demo_style_text_format(){
+demo_style_text_format(){
   style_normal "$demo_string_to_be_format style_normal"
   new_line
   style_bold "$demo_string_to_be_format style_bold"
@@ -89,7 +90,7 @@ function demo_style_text_format(){
 }
 
 # demo_style_text_foreground -------------------------------------------------------------------------------------------
-function demo_style_text_foreground(){
+demo_style_text_foreground(){
   style_foreground_black "$demo_string_to_be_format style_foreground_black"
   new_line
   style_foreground_blue "$demo_string_to_be_format style_foreground_blue"
@@ -125,7 +126,7 @@ function demo_style_text_foreground(){
 }
 
 # demo_style_text_background -------------------------------------------------------------------------------------------
-function demo_style_text_background(){
+demo_style_text_background(){
   style_background_black "$demo_string_to_be_format style_background_black"
   new_line
   style_background_blue "$demo_string_to_be_format style_background_blue"
@@ -161,7 +162,7 @@ function demo_style_text_background(){
 }
 
 # demo_style_combine_use_case ------------------------------------------------------------------------------------------
-function demo_style_combine_use_case()
+demo_style_combine_use_case()
 {
   echo -n "$(style_blinking "<<-- SAMPLE -->>") Mix the Foreground Color $(style_foreground_brown "Brown") with the " 
   echo -n "$(style_foreground_brown_bold "Brown Bold") and Background Color $(style_background_purple " Purple ") on "
@@ -170,7 +171,7 @@ function demo_style_combine_use_case()
 }
 
 # demo_ui_message_box ------------------------------------------------------------------------------------------
-function demo_ui_message_box()
+demo_ui_message_box()
 {
   #  default title with default options
   ui_message_box
@@ -225,20 +226,20 @@ function demo_ui_message_box()
 }
 
 
-# show_app_header
-# empty_line
+show_app_header
+empty_line
 
-# demo_style_text_format
-# empty_line
-# demo_style_text_foreground
-# empty_line
-# demo_style_text_background
-# empty_line
-# demo_style_combine_use_case
-# empty_line
-# demo_ui_message_box
-# empty_line
+demo_style_text_format
+empty_line
+demo_style_text_foreground
+empty_line
+demo_style_text_background
+empty_line
+demo_style_combine_use_case
+empty_line
+demo_ui_message_box
+empty_line
 
-# show_app_footer
-# empty_line
+show_app_footer
+empty_line
 
