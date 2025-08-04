@@ -40,6 +40,39 @@ if [ ! -f "$APP_ROOT/library/style.sh" ]; then
 fi
 . $APP_ROOT/library/style.sh
 
+if [ ! -f "$APP_ROOT/library/ui.sh" ]; then
+  echo "Runtime Error : '/library/ui.sh' is require to run '$APP_NAME'." >&2
+  echo ""
+  exit 1
+fi
+. $APP_ROOT/library/ui.sh
+
+
+# show_app_header ------------------------------------------------------------------------------------------------------
+show_app_header()
+{
+  declare -a header_title=(
+    "style_foreground_blue"
+    "ui_message_box_text_align_center"
+    "$APP_NAME v$APP_VERSION"
+  )
+  ui_message_box "${header_title[@]}"
+}
+
+# show_app_footer ------------------------------------------------------------------------------------------------------
+show_app_footer()
+{
+  declare -a footer_title=(
+    "style_foreground_gray"
+    "ui_message_box_text_align_center"
+    "Thank you!"
+    "ui_message_box_text_align_left"
+    "   Developer : ${app_configuration["app_author"]} [${app_configuration["app_author_url"]}]"
+    "     License : ${app_configuration["app_license"]} [${app_configuration["app_license_url"]}]"
+    "     Version : $APP_VERSION"
+  )
+  ui_message_box "${footer_title[@]}"
+}
 
 
 # demo_style_text_format -----------------------------------------------------------------------------------------------
@@ -139,7 +172,65 @@ demo_style_combine_use_case()
   # No 'new_line' need here, becurse last 'echo' don't have '-n' flag
 }
 
+# demo_ui_message_box --------------------------------------------------------------------------------------------------
+demo_ui_message_box()
+{
+  #  default title with default options
+  ui_message_box
+  empty_line
 
+  #  default title with custom color options
+  ui_message_box "style_foreground_blue"
+  empty_line
+
+  #  default title with custom text alignment options
+  ui_message_box "ui_message_box_text_align_left"
+  empty_line
+
+  ui_message_box "Custom title with default options"
+  empty_line
+
+  ui_message_box "style_foreground_blue" "Custom title with custom color options"
+  empty_line
+
+  options=(
+    "style_foreground_green" 
+    "ui_message_box_text_align_left" 
+    "Custom title with custom color and text align options"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+
+  options=(
+    "style_foreground_green" 
+    "ui_message_box_text_align_left" 
+    "Custom title with custom color,text align and content options"
+    "after this, all arguments"
+    "Will"
+    "Be"
+    "The Content"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+
+  options=(
+    "style_background_cyan_bold" 
+    "ui_message_box_text_align_center" 
+    "Custom title with custom color, text align and content, align options"
+    "ui_message_box_text_align_left" 
+    "after this, all arguments"
+    "Will"
+    "Be"
+    "The Content"
+  )
+  ui_message_box "${options[@]}"
+  empty_line
+}
+
+
+
+show_app_header
+empty_line
 
 demo_style_text_format
 empty_line
@@ -148,4 +239,10 @@ empty_line
 demo_style_text_background
 empty_line
 demo_style_combine_use_case
+empty_line
+
+demo_ui_message_box
+empty_line
+
+show_app_footer
 empty_line
