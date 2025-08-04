@@ -8,7 +8,11 @@ set -euo pipefail
 export APP_NAME="Template Bash Script - Playground"
 export APP_SLUG="template_bash_script_playground"
 export APP_VERSION="1.0.0"
-export APP_ROOT=$(pwd)
+# export APP_ROOT=$(pwd)
+# export APP_ROOT=$(dirname "$0")
+# These method ensure you get the directory of the script, even if it's executed from a different location.
+# this option is more robust handling of symbolic links.
+export APP_ROOT=$(dirname "$(realpath "$0")")
 export APP_HOME=$HOME/.config/$APP_SLUG
 
 declare -A app_configuration=(
@@ -26,33 +30,33 @@ if [ ! -d "$APP_HOME" ]; then
   mkdir "$APP_HOME"
 fi
 
-if [ ! -f "$APP_ROOT/library/config.sh" ]; then
+if [ ! -f "$APP_ROOT/../library/config.sh" ]; then
   echo "Runtime Error : '/library/config.sh' is require to run '$APP_NAME'." >&2
   echo ""
   exit 1
 fi
-. $APP_ROOT/library/config.sh
+. $APP_ROOT/../library/config.sh
 
-if [ ! -f "$APP_ROOT/library/utility.sh" ]; then
+if [ ! -f "$APP_ROOT/../library/utility.sh" ]; then
   echo "Runtime Error : '/library/utility.sh' is require to run '$APP_NAME'." >&2
   echo ""
   exit 1
 fi
-. $APP_ROOT/library/utility.sh
+. $APP_ROOT/../library/utility.sh
 
-if [ ! -f "$APP_ROOT/library/style.sh" ]; then
+if [ ! -f "$APP_ROOT/../library/style.sh" ]; then
   echo "Runtime Error : '/library/style.sh' is require to run '$APP_NAME'." >&2
   echo ""
   exit 1
 fi
-. $APP_ROOT/library/style.sh
+. $APP_ROOT/../library/style.sh
 
-if [ ! -f "$APP_ROOT/library/ui.sh" ]; then
+if [ ! -f "$APP_ROOT/../library/ui.sh" ]; then
   echo "Runtime Error : '/library/ui.sh' is require to run '$APP_NAME'." >&2
   echo ""
   exit 1
 fi
-. $APP_ROOT/library/ui.sh
+. $APP_ROOT/../library/ui.sh
 
 
 # show_app_header ------------------------------------------------------------------------------------------------------
