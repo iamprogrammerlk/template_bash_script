@@ -32,3 +32,10 @@ if [ ! -f "$APP_ROOT/library/utility.sh" ]; then
   exit 1
 fi
 . $APP_ROOT/library/utility.sh
+
+if [ ! -f "$APP_ROOT/library/style.sh" ]; then
+  echo "Runtime Error : '/library/style.sh' is require to run '$APP_NAME'." >&2
+  echo ""
+  exit 1
+fi
+. $APP_ROOT/library/style.sh
