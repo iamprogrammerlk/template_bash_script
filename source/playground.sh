@@ -25,3 +25,10 @@ cd $HOME
 if [ ! -d "$APP_HOME" ]; then
   mkdir "$APP_HOME"
 fi
+
+if [ ! -f "$APP_ROOT/library/utility.sh" ]; then
+  echo "Runtime Error : '/library/utility.sh' is require to run '$APP_NAME'." >&2
+  echo ""
+  exit 1
+fi
+. $APP_ROOT/library/utility.sh
