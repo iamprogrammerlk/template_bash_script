@@ -23,7 +23,7 @@ declare -A app_configuration=(
   ["app_author_url"]="https://iamprogrammer.lk"
 )
 
-demo_string_to_be_format="This string formatting is applied by calling function "
+demo_string_to_be_format="This string formatting is applied by calling the function "
 
 cd $HOME
 if [ ! -d "$APP_HOME" ]; then
