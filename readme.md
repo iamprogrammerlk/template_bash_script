@@ -3,7 +3,7 @@
 <br><br>
 
 <div align="center" style="text-align: center;">
-  <a href="https://iamprogrammer.lk">
+  <a href="https://iamprogrammer.lk/template_bash_script">
     <img src="https://avatars.githubusercontent.com/u/17584831?v=4" alt="iamprogrammer.lk" width="200">
   </a>
 </div>
@@ -19,6 +19,53 @@
 > ## ⭐ Star This Repository
 >
 > If you enjoy this project and my work, please consider supporting me giving a ⭐ star ⭐ to this repository.
+
+<br><p align="right">(<a href="#readme-top">👆 back to top 👆</a>)</p>
+
+---
+
+# 🪧 Usage
+
+- Clone the [template repository][template_bash_script] and start building
+
+  ```
+  git clone --recurse-submodules https://github.com/iamprogrammerlk/template_bash_script.git
+  ```
+
+> [!IMPORTANT]
+> Don't forget the `--recurse-submodules` option,
+
+If you already cloned the project and forgot `--recurse-submodules`, You must run following two commands from
+the main project `git submodule init` to initialize your local configuration file, and `git submodule update` to
+fetch all the files from the `template_bash_script` project, you can use the foolproof
+`git submodule update --init --recursive` command to also initialize, fetch and checkout any nested submodules.
+
+- Run the following command time to time in your project to keep up to date with the latest version of
+  the Pretty Bash Library.
+
+  ```
+  git submodule update --remote
+  ```
+
+<br><p align="right">(<a href="#readme-top">👆 back to top 👆</a>)</p>
+
+---
+
+# 🪏 Examples
+
+Open the `source/template_bash_script.sh` file to play around.
+
+- Make the 'template_bash_script.sh' executable
+
+  ```
+  sudo chmod +x source/template_bash_script.sh
+  ```
+
+- Then run
+
+  ```
+  ./source/template_bash_script.sh
+  ```
 
 <br><p align="right">(<a href="#readme-top">👆 back to top 👆</a>)</p>
 
@@ -152,3 +199,4 @@ See [license][license_md] for more information.
 [license]: https://choosealicense.com/licenses/wtfpl/
 [license_md]: /license.md
 [security_advisories]: /../../security/advisories/new
+[template_bash_script]: https://github.com/iamprogrammerlk/template_bash_script
