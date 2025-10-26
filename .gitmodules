@@ -1,0 +1,3 @@
+[submodule "source/library_pretty_bash"]
+	path = source/library_pretty_bash
+	url = https://github.com/iamprogrammerlk/library_pretty_bash.git
