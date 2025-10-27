@@ -177,7 +177,7 @@ demo_style_text_background(){
 # demo_style_combine_use_case ------------------------------------------------------------------------------------------
 demo_style_combine_use_case()
 {
-  echo -n "$(style_blinking "<<-- SAMPLE -->>") Mix the Foreground Color $(style_foreground_brown "Brown") with the " 
+  echo -n "$(style_blinking "<<-- SAMPLE -->>") Mix the Foreground Color $(style_foreground_brown "Brown") with the "
   echo -n "$(style_foreground_brown_bold "Brown Bold") and Background Color $(style_background_purple " Purple ") on "
   echo "$(style_reverse_video "$(style_underline " BASH ")")"
   # No 'new_line' need here, becurse last 'echo' don't have '-n' flag
@@ -205,16 +205,16 @@ demo_ui_message_box()
   empty_line
 
   options=(
-    "style_foreground_green" 
-    "ui_message_box_text_align_left" 
+    "style_foreground_green"
+    "ui_message_box_text_align_left"
     "Custom title with custom color and text align options"
   )
   ui_message_box "${options[@]}"
   empty_line
 
   options=(
-    "style_foreground_green" 
-    "ui_message_box_text_align_left" 
+    "style_foreground_green"
+    "ui_message_box_text_align_left"
     "Custom title with custom color,text align and content options"
     "after this, all arguments"
     "Will"
@@ -225,10 +225,10 @@ demo_ui_message_box()
   empty_line
 
   options=(
-    "style_background_cyan_bold" 
-    "ui_message_box_text_align_center" 
+    "style_background_cyan_bold"
+    "ui_message_box_text_align_center"
     "Custom title with custom color, text align and content, align options"
-    "ui_message_box_text_align_left" 
+    "ui_message_box_text_align_left"
     "after this, all arguments"
     "Will"
     "Be"
@@ -238,31 +238,96 @@ demo_ui_message_box()
   empty_line
 }
 
+# demo_config_list -----------------------------------------------------------------------------------------------------
+demo_config_list()
+{
+  setting_list_file="$APP_HOME/setting_list.conf"
+
+  # Setting new list of configurations
+  echo "Setting new configs to '$setting_list_file'"
+  setting_list_array=(
+    "$APP_NAME"
+    "$APP_SLUG"
+    "$APP_VERSION"
+    )
+  set_config_list "$setting_list_file" "setting_list_array"
+
+  empty_line
+
+  # Getting newly created list of configurations
+  echo "Getting new configs from '$setting_list_file'"
+  declare -a setting_list_data
+  get_config_list "$setting_list_file" "setting_list_data"
+  for element in "${setting_list_data[@]}"
+  do
+    echo "$element"
+  done
+}
+
+# demo_config_key_value ------------------------------------------------------------------------------------------------
+demo_config_key_value()
+{
+  setting_key_value_file="$APP_HOME/setting_key_value.conf"
+
+  # Setting new key=value pair of configurations
+  echo "Setting new key=value configs to '$setting_key_value_file'"
+  # An associative array to hole newly created data
+  declare -A setting_key_value_array
+  setting_key_value_array["app_name"]="$APP_NAME"
+  setting_key_value_array["app_slug"]="$APP_SLUG"
+  setting_key_value_array["app_version"]="$APP_VERSION"
+  # Pass the file path and array name to the set_config(). A new file will created if doesn't exist
+  set_config "$setting_key_value_file" "setting_key_value_array"
+
+  empty_line
+
+  # Getting newly created key=value pair of configurations
+  echo "Getting settings from '$setting_key_value_file' file"
+  # An associative array to hole returned data
+  declare -A setting_key_value_data
+  # Pass file path and array name to the get_config()
+  get_config "$setting_key_value_file" "setting_key_value_data"
+
+  # # Iterate over the keys
+  # echo "All keys:"
+  # for key in "${!setting_key_value_data[@]}"; do
+  #     echo "- $key"
+  # done
+
+  # # Iterate over the value
+  # echo "All values:"
+  # for value in "${setting_key_value_data[@]}"; do
+  #     echo "- $value"
+  # done
+
+  # # Accessing the values
+  echo "App Name: ${setting_key_value_data["app_name"]}"
+  echo "App Slug: ${setting_key_value_data["app_slug"]}"
+  echo "App Version: ${setting_key_value_data["app_version"]}"
+}
+
 show_app_header
 empty_line
 
 demo_style_text_format
 empty_line
+
 demo_style_text_foreground
 empty_line
+
 demo_style_text_background
 empty_line
+
 demo_style_combine_use_case
 empty_line
 
 demo_ui_message_box
 empty_line
 
-echo "Getting App settings from '$APP_HOME/settings.conf' file"
-# an associative array to hole returned data
-declare -A settings
-# Pass file path and array name to the get_config()
-# A new file will created if doesn't exist
-get_config "$APP_HOME/settings.conf" "settings"
-# Accessing the values
-echo "${settings["app_name"]}"
-echo "${settings["app_slug"]}"
-echo "${settings["app_version"]}"
+demo_config_list
+empty_line
+
+demo_config_key_value
 empty_line
 
 show_app_footer
