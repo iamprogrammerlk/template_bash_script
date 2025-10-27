@@ -40,3 +40,8 @@ Open the `source/template_bash_script.sh` file to play around.
   ```
 
 [template_bash_script]: https://github.com/iamprogrammerlk/template_bash_script
+
+## Library
+
+This template uses the latest version of the Pretty Bash Library
+
